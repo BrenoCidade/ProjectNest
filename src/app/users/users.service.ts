@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { FindOneOptions, FindOptionsWhere, Not, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { UsersEntity } from './users.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UpdateUserDto } from './dtos/update-user.dto';

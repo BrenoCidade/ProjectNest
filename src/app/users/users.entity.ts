@@ -1,4 +1,4 @@
-import { BeforeInsert, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 import {hashSync} from 'bcrypt';
 
 
@@ -25,7 +25,7 @@ export class UsersEntity {
     @CreateDateColumn({name: 'updated_at'})
     updatedAt: string;
 
-    @CreateDateColumn({name: 'deleted_at'})
+    @DeleteDateColumn({name: 'deleted_at'})
     deletedAt: string;
 
     @BeforeInsert()
