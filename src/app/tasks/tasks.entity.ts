@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { UsersEntity } from "../users/users.entity";
 
 
 @Entity({name: 'tasks'})
@@ -20,4 +21,7 @@ export class TaskEntity {
 
     @DeleteDateColumn({name: 'task_deleted_at'})
     deletedAt: string;
+
+    @ManyToOne(() => UsersEntity, (user) => user.tasks)
+    user: UsersEntity;
 }

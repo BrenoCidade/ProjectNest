@@ -1,5 +1,6 @@
-import { BeforeInsert, Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import {hashSync} from 'bcrypt';
+import { TaskEntity } from "../tasks/tasks.entity";
 
 
 @Entity({name: 'users'})
@@ -32,4 +33,8 @@ export class UsersEntity {
     hashPassword() {
         this.password = hashSync(this.password, 10)
     }
+
+    @OneToMany(type => TaskEntity, task => task.user)
+    tasks: TaskEntity[];
+
 }
